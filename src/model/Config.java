@@ -20,7 +20,7 @@ public class Config {
     private static String encryptionkey;
     private static int serverPort;
 
-    // Create init-method to read from the config.json.dist file
+    // Create init-method to read from the config.json file
     // and parse it to the variables in the class.
     public static void init() throws IOException {
 
