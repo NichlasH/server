@@ -3,6 +3,7 @@ package api;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import controller.Logic;
+import controller.Security;
 import model.Config;
 import tui.Tui;
 
@@ -20,6 +21,7 @@ public class Main {
         HttpServer server = HttpServerFactory.create("http://localhost:" + Config.getServerPort() + "/");
         server.start();
         System.out.println("Server running");
+        System.out.println(Security.hashing("123"));
         System.out.println("Visit: http://localhost:" + Config.getServerPort() + "/api");
         Tui.serverMenu();
         System.out.println("Hit return to confirm to stop...");

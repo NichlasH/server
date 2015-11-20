@@ -176,7 +176,6 @@ public class Tui {
     public static String enterEmail() {
         System.out.print("Please enter email: "); // Brugeren bliver spurgt om email
         String email = input.next();
-
         return email;
     }
 

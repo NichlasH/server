@@ -45,16 +45,18 @@ public class Api {
             switch (hashMap.get("code")) {
                 case 0:
                     return Response
-                            .status(400)
+                            .status(200)
                             .entity("{\"message\":\"Wrong username or password\"}")
                             .header("Access-Control-Allow-Headers", "*")
+                            .header("Access-Control-Allow-Origin", "*")
                             .build();
 
                 case 1:
                     return Response
-                            .status(400)
+                            .status(200)
                             .entity("{\"message\":\"Wrong username or password\"}")
                             .header("Access-Control-Allow-Headers", "*")
+                            .header("Access-Control-Allow-Origin", "*")
                             .build();
 
                 case 2:
@@ -62,12 +64,14 @@ public class Api {
                             .status(200)
                             .entity("{\"message\":\"Login successful\", \"userid\":" + hashMap.get("userid") + "}")
                             .header("Access-Control-Allow-Headers", "*")
+                            .header("Access-Control-Allow-Origin", "*")
                             .build();
                 default:
                     return Response
                             .status(500)
                             .entity("{\"message\":\"Unknown error. Please contact Henrik Thorn at: henrik@itkartellet.dk\"}")
                             .header("Access-Control-Allow-Headers", "*")
+                            .header("Access-Control-Allow-Origin", "*")
                             .build();
             }
 
@@ -77,6 +81,7 @@ public class Api {
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
 
@@ -141,6 +146,7 @@ public class Api {
                         .status(200)
                         .entity("{\"message\":\"User was created\"}")
                         .header("Access-Control-Allow-Headers", "*")
+                        .header("Access-Control-Allow-Origin", "*")
                         .build();
             } else {
                 return Response.status(400).entity("{\"message\":\"Username or email already exists\"}").build();
@@ -151,6 +157,7 @@ public class Api {
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
     }
@@ -168,11 +175,13 @@ public class Api {
                     .status(200)
                     .entity(new Gson().toJson(user))
                     .header("Access-Control-Allow-Origin", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         } else {
             return Response
                     .status(400)
                     .entity("{\"message\":\"User was not found\"}")
+                    .header("Access-Control-Allow-Origin", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
@@ -191,12 +200,14 @@ public class Api {
                         .status(201)
                         .entity(new Gson().toJson(game))
                         .header("Access-Control-Allow-Headers", "*")
+                        .header("Access-Control-Allow-Origin", "*")
                         .build();
             } else {
                 return Response
                         .status(400)
                         .entity("{\"message\":\"something went wrong\"}")
                         .header("Access-Control-Allow-Headers", "*")
+                        .header("Access-Control-Allow-Origin", "*")
                         .build();
             }
         } catch (JsonSyntaxException | NullPointerException e) {
@@ -205,6 +216,7 @@ public class Api {
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
     }
@@ -228,6 +240,7 @@ public class Api {
                         .status(400)
                         .entity("{\"message\":\"Game closed\"}")
                         .header("Access-Control-Allow-Headers", "*")
+                        .header("Access-Control-Allow-Origin", "*")
                         .build();
             }
         } catch (JsonSyntaxException | NullPointerException e) {
@@ -236,6 +249,7 @@ public class Api {
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
     }
@@ -267,6 +281,7 @@ public class Api {
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
 
@@ -284,12 +299,14 @@ public class Api {
                     .status(200)
                     .entity("{\"message\":\"Game was deleted\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         } else {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Failed. Game was not deleted\"}")
                     .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
     }
@@ -301,16 +318,25 @@ public class Api {
 
         Game game = Logic.getGame(gameid);
         return new Gson().toJson(game);
+
     }
 
     @GET //"GET-request"
     @Path("/scores/")
     @Produces("application/json")
-    public String getHighscore(String data) {
+    public Response getHighscore(String data) {
 
-        return new Gson().toJson(Logic.getHighscore());
+        ArrayList <Score> score = Logic.getHighscore();
 
+        return Response
+                .status(201)
+                .entity(new Gson().toJson(score))
+                .header("Access-Control-Allow-Headers", "*")
+                .header("Access-Control-Allow-Origin", "*")
+                .build();
     }
+
+
 
     /*
     Getting games by userid
@@ -325,6 +351,7 @@ public class Api {
         return Response
                 .status(201)
                 .entity(new Gson().toJson(games))
+                .header("Access-Control-Allow-Headers", "*")
                 .header("Access-Control-Allow-Origin", "*")
                 .build();
     }
