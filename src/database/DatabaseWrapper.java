@@ -341,6 +341,7 @@ public class DatabaseWrapper {
                 score.setGame(game);
                 score.setOpponent(opponent);
 
+
                 // Since Gson returns 0 for all unset int variables we are adding the opponent user_id.
                 score.setScore(resultSet.getInt("highscore"));
 
