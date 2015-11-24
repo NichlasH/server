@@ -199,6 +199,7 @@ public class Api {
                 return Response
                         .status(201)
                         .entity(new Gson().toJson(game))
+                        .entity("{\"message\":\"game created\"}")
                         .header("Access-Control-Allow-Headers", "*")
                         .header("Access-Control-Allow-Origin", "*")
                         .build();
@@ -356,6 +357,7 @@ public class Api {
                 .build();
     }
 
+
     /*
     Getting games by game status and user id
      */
@@ -381,6 +383,7 @@ public class Api {
                 .status(201)
                 .entity(new Gson().toJson(games))
                 .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "*")
                 .build();
     }
 
@@ -396,6 +399,7 @@ public class Api {
                 .status(201)
                 .entity(new Gson().toJson(games))
                 .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "*")
                 .build();
     }
 
@@ -412,6 +416,7 @@ public class Api {
                 .status(201)
                 .entity(new Gson().toJson(games))
                 .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "*")
                 .build();
     }
 
@@ -430,6 +435,7 @@ public class Api {
                 .status(201)
                 .entity(new Gson().toJson(games))
                 .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "*")
                 .build();
     }
 
@@ -449,6 +455,7 @@ public class Api {
                 .status(201)
                 .entity(new Gson().toJson(score))
                 .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "*")
                 .build();
     }
 }
