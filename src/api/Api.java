@@ -288,7 +288,7 @@ public class Api {
 
     }
 
-    @DELETE //DELETE-request fjernelse af data(spillet slettes)
+    @POST //DELETE-request fjernelse af data(spillet slettes)
     @Path("/games/{gameid}")
     @Produces("appication/json")
     public Response deleteGame(@PathParam("gameid") int gameId) {
