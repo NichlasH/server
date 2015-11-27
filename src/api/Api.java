@@ -256,7 +256,7 @@ public class Api {
     }
 //
 
-    @PUT
+    @POST
     @Path("/games/start/")
     @Produces("application/json")
     public Response startGame(String json) {
@@ -269,10 +269,13 @@ public class Api {
                         .status(201)
                         .entity(new Gson().toJson(game))
                         .header("Access-Control-Allow-Origin", "*")
+                        .header("Access-Control-Allow-Headers", "*")
                         .build();
             } else {
                 return Response
                         .status(400)
+                        .header("Access-Control-Allow-Origin", "*")
+                        .header("Access-Control-Allow-Headers", "*")
                         .entity("something went wrong")
                         .build();
             }
