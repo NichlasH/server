@@ -20,7 +20,7 @@ public class Main {
         HttpServer server = HttpServerFactory.create("http://localhost:" + Config.getServerPort() + "/");
         server.start();
         System.out.println("Visit: http://localhost:" + Config.getServerPort() + "/api");
-        Tui.serverMenu();
+    Tui.serverMenu();
         System.out.println("Hit return to confirm to stop...");
         System.in.read();
         System.out.println("Stopping server");
