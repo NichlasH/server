@@ -181,7 +181,7 @@ public class Tui {
 
     public static int enterUserType() {
         boolean userTypeApproved = false;
-        System.out.print("Please enter user type (1 or 2) \n1) Admin\n2) User\n");
+        System.out.print("Please enter user type (1 or 2) \n1) User\n2) Admin\n");
         int userType = input.nextInt();
 
         do {
