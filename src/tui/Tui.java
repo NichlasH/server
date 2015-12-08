@@ -41,7 +41,7 @@ public class Tui {
 
         HashMap <String, Integer> hashMap = Logic.authenticateUser(enterUsername(), Security.hashing(enterPassword()));
 
-        if (hashMap.get("usertype") == 1) {
+      if (hashMap.get("usertype") == 1) {
             hashMap.put("code", 0);
         }
 
@@ -125,12 +125,17 @@ public class Tui {
 
         //TODO: This should work! - DONE
         User usr = new User();
+        String Status = "Active";
+
         usr.setFirstName(enterFirstName());
+        usr.setStatus(Status);
         usr.setLastName(enterLastName());
         usr.setEmail(enterEmail());
         usr.setUsername(enterUsername());
         usr.setPassword(enterPassword());
         usr.setType(enterUserType());
+
+
 
         return usr;
     }
@@ -181,8 +186,8 @@ public class Tui {
 
     public static int enterUserType() {
         boolean userTypeApproved = false;
-        System.out.print("Please enter user type (1 or 2) \n1) User\n2) Admin\n");
-        int userType = input.nextInt();
+        System.out.print("Please enter user type (1 or 2) \n1) Admin\n2) User\n");
+        int userType = Integer.parseInt(input.next());
 
         do {
             if (userType != 1 && userType != 2)

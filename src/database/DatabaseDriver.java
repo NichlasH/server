@@ -149,8 +149,8 @@ public class DatabaseDriver {
     }
 
     public String createSqlUser() {
-        return "Insert into users (first_name, last_name, email, username, password, type) " +
-                "values (?, ?, ?, ?, ?, ?)";
+        return "Insert into users (status, first_name, last_name, email, username, password, type) " +
+                "values (?, ?, ?, ?, ?, ?, ?)";
     }
 
     public String createSqlGame() {

@@ -435,13 +435,14 @@ public class DatabaseWrapper {
         try {
             // Prepared statement til at tilfoeje en bruger
             PreparedStatement createUser = connection.prepareStatement(dbDriver.createSqlUser());
+            createUser.setString(1, user.getStatus());
+            createUser.setString(2, user.getFirstName());
+            createUser.setString(3, user.getLastName());
+            createUser.setString(4, user.getEmail());
+            createUser.setString(5, user.getUsername());
+            createUser.setString(6, user.getPassword());
+            createUser.setInt(7, user.getType());
 
-            createUser.setString(1, user.getFirstName());
-            createUser.setString(2, user.getLastName());
-            createUser.setString(3, user.getEmail());
-            createUser.setString(4, user.getUsername());
-            createUser.setString(5, user.getPassword());
-            createUser.setInt(6, user.getType());
 
             createUser.executeUpdate();
         } catch(MySQLIntegrityConstraintViolationException m){
